@@ -13,17 +13,15 @@ const auth = require('../middleware/auth');
 // insert user to database
 router.post('/', (req, res) => {
     let {
-        name,
-        email,
         username,
-        password,
+        password
     } = req.body;
 
-    if (!name || !email || !username || !password) return res.status(400).json({
+    if (!username || !password) return res.status(400).json({
         msg: 'Please enter all fields'
     });
 
-    db.User.findOne({
+    db.user.findOne({
         where: {
             username: username
         }
@@ -38,24 +36,28 @@ router.post('/', (req, res) => {
                     msg: 'invalid credentials'
                 });
                 jwt.sign({
-                        id: user.id,
-                        username: user.username,
-                        role: user.role
-                    },
-                    config.get('jwtSecret'), {
-                        expiresIn: 7200
-                    },
-                    (err, token) => {
-                        if (err) throw err;
-                        res.json({
-                            token,
-                            user: {
-                                id: user.id,
-                                username: user.username,
-                                role: user.role
-                            }
-                        })
-                    }
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    username: user.username,
+                    role: user.role
+                },
+                config.get('jwtSecret'), {
+                    expiresIn: 7200
+                },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({
+                        token,
+                        user: {
+                            id: user.id,
+                            name: user.name,
+                            email: user.email,
+                            username: user.username,
+                            role: user.role
+                        }
+                    })
+                }
                 )
             })
     })

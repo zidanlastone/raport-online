@@ -12,7 +12,10 @@ models.sequelize.sync()
         console.error('Unable to connect to the database:', err);
     });
 
-app.use('/auth', require('./routes/Auth'));
+app.use('/api/auth', require('./routes/Auth'));
+app.use('/api/user', require('./routes/User'));
+app.use('/api/students', require('./routes/Students'));
+app.use('/api/grades', require('./routes/Grades'));
 
 let port = process.env.PORT || 5000;
 app.listen(port,()=> console.log("server run on port:", port));

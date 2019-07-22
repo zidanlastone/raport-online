@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     outYear: DataTypes.DATE
   }, {});
   grades.associate = function(models) {
-    // associations can be defined here
+    grades.belongsToMany(models.students, {
+      through: 'students_at_grade',
+      as:'students',
+      foreignKey:'gradeId',
+      targetKey:'id'
+    })
   };
   return grades;
 };
