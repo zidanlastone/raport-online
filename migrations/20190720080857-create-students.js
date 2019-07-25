@@ -11,7 +11,7 @@ module.exports = {
       nis: {
         type: Sequelize.INTEGER
       },
-      nins: {
+      nisn: {
         type: Sequelize.INTEGER
       },
       name: {

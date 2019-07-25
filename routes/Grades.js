@@ -12,8 +12,7 @@ router.get('/', auth, (req, res) => {
         include:[{
             model:db.students,
             as:'students',
-            required:false,
-            through:db.students_at_grade
+            required:false
         }]
     })
         .then(Kelas => {

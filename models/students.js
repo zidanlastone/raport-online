@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const students = sequelize.define('students', {
     nis: DataTypes.INTEGER,
-    nins: DataTypes.INTEGER,
+    nisn: DataTypes.INTEGER,
     name: DataTypes.STRING,
     birthLocation: DataTypes.STRING,
     birthDate: DataTypes.DATE,

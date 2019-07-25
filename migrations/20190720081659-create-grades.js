@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       yearOfEntry: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       outYear: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
