@@ -6,20 +6,52 @@ const db = require('../models');
 
 // route api/Kelas
 // get Kelas by kelas
-// access public
+// access private
+
 router.get('/', auth, (req, res) => {
-    db.grades.findAll({
-        include:[{
-            model:db.students,
-            as:'students',
-            required:false
-        }]
-    })
+    db.grades.findAll()
         .then(Kelas => {
             res.json(Kelas);
         })
         .catch(err => console.log(err));
 });
+
+router.get('/:id', auth, (req, res) => {
+    db.grades.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [{
+                model: db.students,
+                as: 'students',
+                required: false
+            }]
+        })
+        .then(Kelas => {
+            res.json(Kelas);
+        })
+        .catch(err => console.log(err));
+});
+
+router.post('/add-to-grade', auth, (req,res) => {
+    const jsondata = req.body;
+    db.students_at_grade.bulkCreate(
+        jsondata
+    )
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err));
+})
+
+router.delete('/delete-from-grade/:id', auth, (req, res) => {
+    db.students_at_grade.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(() => res.sendStatus(202))
+        .catch(err => console.log(err));
+});
+
 
 // membuat kelas baru
 router.post('/', auth, (req, res) => {

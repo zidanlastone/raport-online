@@ -46,7 +46,7 @@ module.exports = {
         religion:'Islam',
         address:'somewhere',
         dateOfEntry: '2017-06-15'
-      } 
+      }
   ], {});
   },
 

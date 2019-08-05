@@ -64,7 +64,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/user', auth, (req, res) => {
-    db.User.findOne({
+    db.user.findOne({
             where: {
                 id: req.user.id
             },

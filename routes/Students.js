@@ -6,7 +6,7 @@ const db = require('../models');
 
 // route api/siswa
 // get siswa by kelas
-// access public
+// access private
 router.get('/', auth, (req, res) => {
     db.students.findAll()
         .then(siswa => {
