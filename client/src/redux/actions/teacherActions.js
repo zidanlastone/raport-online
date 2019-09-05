@@ -1,9 +1,16 @@
 import axios from 'axios';
-import { GET_TEACHERS, ADD_TEACHER, DELETE_TEACHER, LOADING_TEACHER, GET_DETAIL_TEACHER } from './types';
+import {
+    GET_TEACHERS,
+    ADD_TEACHER,
+    DELETE_TEACHER,
+    LOADING_TEACHER,
+    GET_DETAIL_TEACHER
+} from './types';
 
 import {
     tokenConfig
 } from './authActions';
+
 import {
     returnErrors
 } from './errorActions';

@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
 
     render(){
         if (this.props.isAuthenticated) {
-            return <Redirect to='/siswa' />
+            return <Redirect to='/admin/dashboard' />
         }
         return(
                 <Row className="my-5">

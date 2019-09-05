@@ -1,4 +1,11 @@
-import { GET_STUDENTS, ADD_STUDENT, DELETE_STUDENT, LOADING_STUDENT, GET_DETAIL_STUDENT, GET_STUDENTS_BY_GRADE } from '../actions/types';
+import {
+    GET_STUDENTS,
+    ADD_STUDENT,
+    DELETE_STUDENT,
+    LOADING_STUDENT,
+    GET_DETAIL_STUDENT,
+    GET_STUDENTS_BY_GRADE
+} from '../actions/types';
 
 const initialState = {
     students: [],

@@ -1,12 +1,18 @@
 import axios from 'axios';
-import { GET_STUDENTS,GET_STUDENTS_BY_GRADE, ADD_STUDENT, DELETE_STUDENT, LOADING_STUDENT,GET_DETAIL_STUDENT} from './types';
+import {
+    GET_STUDENTS,
+    GET_STUDENTS_BY_GRADE,
+    ADD_STUDENT, DELETE_STUDENT,
+    LOADING_STUDENT,GET_DETAIL_STUDENT
+} from './types';
+
 import {tokenConfig} from './authActions';
 import {returnErrors} from './errorActions';
 
 export const getStudents = () => (dispatch,getState) => {
     dispatch(setStudentsLoading());
     axios
-        .get('/api/siswa',tokenConfig(getState))
+        .get('/api/students',tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: GET_STUDENTS,
@@ -19,7 +25,7 @@ export const getStudents = () => (dispatch,getState) => {
 export const getStudentsByGrade = (id) => (dispatch,getState) => {
     dispatch(setStudentsLoading());
     axios
-        .get(`/api/siswa/${id}`, tokenConfig(getState))
+        .get(`/api/students/${id}`, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: GET_STUDENTS_BY_GRADE,
@@ -32,7 +38,7 @@ export const getStudentsByGrade = (id) => (dispatch,getState) => {
 
 export const getStudentDetail = (id) => (dispatch,getState) => {
     axios
-        .get(`/api/siswa/detail/${id}`, tokenConfig(getState))
+        .get(`/api/students/detail/${id}`, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type:GET_DETAIL_STUDENT,
@@ -44,7 +50,7 @@ export const getStudentDetail = (id) => (dispatch,getState) => {
 
 export const addStudents = (students) => (dispatch,getState) => {
     axios
-        .post('/api/siswa', students, tokenConfig(getState))
+        .post('/api/students', students, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: ADD_STUDENT,
@@ -56,7 +62,7 @@ export const addStudents = (students) => (dispatch,getState) => {
 
 export const updateStudent = (students) => (dispatch, getState) => {
     axios
-        .put('/api/siswa', students, tokenConfig(getState))
+        .put('/api/students', students, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: ADD_STUDENT,
@@ -67,7 +73,7 @@ export const updateStudent = (students) => (dispatch, getState) => {
 };
 
 export const deleteStudent = (id) => (dispatch,getState) => {
-    axios.delete(`/api/siswa/${id}`,tokenConfig(getState))
+    axios.delete(`/api/students/${id}`,tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: DELETE_STUDENT,

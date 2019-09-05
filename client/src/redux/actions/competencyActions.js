@@ -1,11 +1,20 @@
 import axios from 'axios';
-import { GET_COMPETENCIES, ADD_COMPETENCY, DELETE_COMPETENCY, LOADING_COMPETENCY, GET_DETAIL_COMPETENCY } from './types';
+import {
+    GET_COMPETENCIES,
+    ADD_COMPETENCY,
+    DELETE_COMPETENCY,
+    LOADING_COMPETENCY,
+    GET_DETAIL_COMPETENCY
+} from './types';
+
 import {
     tokenConfig
 } from './authActions';
+
 import {
     returnErrors
 } from './errorActions';
+
 export const getCompetencies = () => (dispatch,getState) => {
     dispatch(setCompetencyLoading());
     axios

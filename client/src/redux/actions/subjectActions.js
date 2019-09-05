@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, LOADING_SUBJECT, GET_DETAIL_SUBJECT } from './types';
+import {
+    GET_SUBJECTS,
+    ADD_SUBJECT,
+    DELETE_SUBJECT,
+    LOADING_SUBJECT,
+    GET_DETAIL_SUBJECT
+} from './types';
+
 import { tokenConfig } from './authActions.js';
 import {
     returnErrors

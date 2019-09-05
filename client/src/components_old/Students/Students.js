@@ -6,6 +6,10 @@ import {
     getStudents
 } from '../../redux/actions/studentsActions';
 
+import {
+    Link
+} from 'react-router-dom';
+
 class Students extends Component {
 
     constructor(props){
@@ -15,32 +19,17 @@ class Students extends Component {
             moreItemsLoading: false,
             hasNextPage: true,
         }
-
-        this.loadMore = this.loadMore.bind(this);
     }
 
     componentDidMount(){
         this.props.getStudents();
     }
 
-    loadMore(){
-        this.setState({
-            moreItemsLoading: true
-        }, () => {
-
-            fetch('https://jsonplaceholder.typicode.com/photos/')
-                .then(res => this.setState({
-                    moreItemsLoading: false,
-                    items: [...this.state.items, res.json]
-                }));
-        });
-    }
-
-
     render() {
-        const {students} = this.state;
+        const {students} = this.props.students;
         return (
             <>
+                <Link to="/students/add">Add</Link>
                 <StudentList items = {students}/>
             </>
         );

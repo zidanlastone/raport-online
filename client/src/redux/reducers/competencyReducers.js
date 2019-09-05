@@ -1,4 +1,10 @@
-import { GET_COMPETENCIES, ADD_COMPETENCY, DELETE_COMPETENCY, LOADING_COMPETENCY, GET_DETAIL_COMPETENCY } from '../actions/types';
+import {
+    GET_COMPETENCIES,
+    ADD_COMPETENCY,
+    DELETE_COMPETENCY,
+    LOADING_COMPETENCY,
+    GET_DETAIL_COMPETENCY
+} from '../actions/types';
 
 const initialState = {
     competency: [],

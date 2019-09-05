@@ -59,13 +59,13 @@ export const loginUser = ({username,password}) => dispatch => {
     }
 
     const body = JSON.stringify({username,password});
-    axios.post('/api/auth', body,config)
+    axios.post('/api/auth', body, config)
     .then(res => dispatch({
         type: LOGIN_SUCCESS,
-        payload:res.data
+        payload: res.user
     }))
     .catch(err=>{
-        dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
+        dispatch(returnErrors(err.response.user, err.response.status, 'LOGIN_FAIL'));
         dispatch({
             type: LOGIN_FAIL
         });

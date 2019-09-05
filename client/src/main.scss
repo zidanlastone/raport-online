@@ -1,0 +1,28 @@
+$theme-colors: (
+    "primary" : #2082FF,
+    "secondary" : #2E20FF,
+    "info" : #20EEFF,
+    "danger" :#FF2E20
+);
+
+$border-radius: .1rem;
+$border-width: 0.8px;
+
+$body-bg: #f3f3f3;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

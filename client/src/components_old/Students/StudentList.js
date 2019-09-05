@@ -20,10 +20,11 @@ const StudentList = ({items}) => {
         <Card>
             <Card.Body>
                     <FixedSizeList
-                    height={420}
+                    height={530}
                     width={'100%'}
-                    itemSize={123}
+                    itemSize={80}
                     itemCount={itemCount}
+                    className="list-container"
                     >
                     {Row}
                 </FixedSizeList>

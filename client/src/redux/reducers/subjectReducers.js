@@ -1,4 +1,10 @@
-import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, LOADING_SUBJECT, GET_DETAIL_SUBJECT } from '../actions/types';
+import {
+    GET_SUBJECTS,
+    ADD_SUBJECT,
+    DELETE_SUBJECT,
+    LOADING_SUBJECT,
+    GET_DETAIL_SUBJECT
+} from '../actions/types';
 
 const initialState = {
     subjects: [],

@@ -1,4 +1,10 @@
-import { GET_GRADES, ADD_GRADE, DELETE_GRADE, LOADING_GRADE, GET_DETAIL_GRADE } from '../actions/types';
+import {
+    GET_GRADES,
+    ADD_GRADE,
+    DELETE_GRADE,
+    LOADING_GRADE,
+    GET_DETAIL_GRADE
+} from '../actions/types';
 
 const initialState = {
     grades: [],

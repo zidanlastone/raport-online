@@ -7,9 +7,11 @@ import {
     LOADING_SCORE,
     GET_DETAIL_SCORE
 } from './types';
+
 import {
     tokenConfig
 } from './authActions';
+
 import {
     returnErrors
 } from './errorActions';

@@ -1,11 +1,20 @@
 import axios from 'axios';
-import { GET_GRADES, ADD_GRADE, DELETE_GRADE, LOADING_GRADE, GET_DETAIL_GRADE } from './types';
+import {
+    GET_GRADES,
+    ADD_GRADE,
+    DELETE_GRADE,
+    LOADING_GRADE,
+    GET_DETAIL_GRADE
+} from './types';
+
 import {
     tokenConfig
 } from './authActions';
+
 import {
     returnErrors
 } from './errorActions';
+
 export const getGrades = () => (dispatch,getState) => {
     dispatch(setGradeLoading());
     axios
