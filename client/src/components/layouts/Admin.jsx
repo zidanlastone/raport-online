@@ -1,11 +1,7 @@
 import React,{lazy, Suspense} from 'react'
 
-import {
-    Route
-} from 'react-router-dom'
-
 import Loading from '../loader/Loading';
-
+import PrivateRoute from '../PrivateRoute';
 const TopNavbar = lazy(() => import('../TopNavbar/TopNavbar'));
 const Dashboard = lazy(() => import('../dashboard/Dashboard'));
 const Student = lazy(() => import('../student/Student'));
@@ -46,7 +42,7 @@ function Admin() {
             <Suspense fallback={ loading() }>
             <TopNavbar routes={adminRoutes} />
                 {adminRoutes.map((route, index) => (
-                    <Route key={index} path={route.path} component={route.component}/>
+                    <PrivateRoute key={index} path={route.path} component={route.component}/>
                 ))}
             </Suspense>
         </div>

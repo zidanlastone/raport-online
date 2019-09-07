@@ -5,13 +5,13 @@ import {
 
 export const returnErrors = (msg, status, id = null) =>{
     return{
-        type:GET_ERRORS,
-        payload: {msg,status,id}
+        type: GET_ERRORS,
+        payload: { msg, status, id}
     }
 }
 
 export const clearError = () => {
     return{
-        type:CLEAR_ERRORS
+        type: CLEAR_ERRORS
     }
 }

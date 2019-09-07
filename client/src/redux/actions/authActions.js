@@ -20,7 +20,7 @@ export const loadUser = () => (dispatch,getState) =>{
     axios.get('/api/auth/user', tokenConfig(getState))
     .then(res=> dispatch({
         type:USER_LOADED,
-        payload:res.data
+        payload: res.data
     }))
     .catch(err => {
         dispatch(returnErrors(err.response.data, err.response.status));
@@ -51,21 +51,22 @@ export const registerUser = ({username,password,role}) => dispatch => {
     })
 }
 
-export const loginUser = ({username,password}) => dispatch => {
+export const loginUser = (userdata) => dispatch => {
     const config = {
         headers:{
             'Content-type':'application/json'
         }
     }
 
-    const body = JSON.stringify({username,password});
+    const body = JSON.stringify(userdata);
     axios.post('/api/auth', body, config)
     .then(res => dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.user
+        payload: res.data
     }))
-    .catch(err=>{
-        dispatch(returnErrors(err.response.user, err.response.status, 'LOGIN_FAIL'));
+    .catch((error) => {
+        console.log(error)
+        dispatch(returnErrors(error.response.data, error.response.status, 'LOGIN_FAIL'));
         dispatch({
             type: LOGIN_FAIL
         });

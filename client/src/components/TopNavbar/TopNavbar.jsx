@@ -15,8 +15,8 @@ const TopNavbar = (props) => {
                 <Link className="nav-link" key={index} to={route.path}>{route.name}</Link>
             ))}
         </Nav>
-        <Nav className="ml-auto">
-            {/* <Logout/> */}
+        <Nav className="ml-auto text-center">
+            <Logout/>
         </Nav>
         </Navbar.Collapse>
     </Navbar>

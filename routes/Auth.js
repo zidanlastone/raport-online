@@ -10,7 +10,7 @@ const auth = require('../middleware/auth');
 // get siswa by kelas
 // access private
 
-// insert user to database
+// login
 router.post('/', (req, res) => {
     let {
         username,

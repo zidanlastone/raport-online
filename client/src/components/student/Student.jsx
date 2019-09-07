@@ -1,33 +1,38 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import {
-    Row,
-    Col,
-    Card,
     Accordion,
-    Button
+    Button,
+    Row,
+    Col
 } from 'react-bootstrap';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import Loading from '../loader/Loading';
+
+const StudentAdd = lazy(() => import('./StudentAdd')); 
+const List = lazy(() => import('./List')); 
+
+const loading = () => <Loading/>;
 function Student() {
     return (
-        <div>
-        <Accordion>
+        <Suspense fallback={loading()}>
+        <div className="container-fluid mt-2">
+        <Accordion defaultActiveKey="0">
             <Accordion.Toggle as={Button}>
-                Tambah Siswa
+                <FontAwesomeIcon icon="plus"/>
             </Accordion.Toggle>
-            <Row>
-                <Col>
-                    <Accordion.Collapse>
-
-                    </Accordion.Collapse>
-                </Col>
-            </Row>
+            <Accordion.Collapse className="mt-2">
+                <StudentAdd />
+            </Accordion.Collapse>
         </Accordion>
-        <Card>
-            <Card.Body>
-
-            </Card.Body>
-        </Card>
+        <Row>
+            <Col>
+                <List/>
+            </Col>
+        </Row>
+        
         </div>
+        </Suspense>
     )
 }
 

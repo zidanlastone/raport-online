@@ -70,7 +70,7 @@ class LoginPage extends React.Component {
         }
         return(
                 <Row className="my-5">
-                    <Col md={4} lg={4} sm={3} className="mx-auto">
+                    <Col md={5} lg={3} sm={6} xs={8} className="mx-auto">
                         <Card>
                             <Card.Body>
                             {this.state.msg ? <Alert variant="danger" className="shadow" onClose={() => this.props.clearError()} dismissible>{this.state.msg}</Alert>: null}
