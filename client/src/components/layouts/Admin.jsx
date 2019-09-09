@@ -9,8 +9,6 @@ const Teacher = lazy(() => import('../teacher/Teacher'));
 const Subject = lazy(() => import('../subject/Subject'));
 const Competency = lazy(() => import('../competency/Competency'));
 
-
-
 const adminRoutes = [
     {
         path: '/admin/dashboard',

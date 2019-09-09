@@ -3,7 +3,6 @@ import {Navbar,Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import Logout from '../authComponents/Logout';
 
-
 const TopNavbar = (props) => {
     return(
         <Navbar className="shadow-sm" collapseOnSelect expand="lg" bg="primary" variant="dark">

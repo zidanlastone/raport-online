@@ -25,8 +25,9 @@ function Student() {
                 <StudentAdd />
             </Accordion.Collapse>
         </Accordion>
-        <Row>
+        <Row className="mt-3">
             <Col>
+            
                 <List/>
             </Col>
         </Row>

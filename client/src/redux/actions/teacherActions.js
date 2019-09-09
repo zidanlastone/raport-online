@@ -18,7 +18,7 @@ import {
 export const getTeachers = () => (dispatch,getState) => {
     dispatch(setTeacherLoading());
     axios
-        .get('/api/guru',tokenConfig(getState))
+        .get('/api/teachers',tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: GET_TEACHERS,
@@ -30,7 +30,7 @@ export const getTeachers = () => (dispatch,getState) => {
 
 export const getTeacherDetail = (id) => (dispatch,getState) => {
     axios
-        .get(`/api/guru/${id}`,tokenConfig(getState))
+        .get(`/api/teacher/${id}`,tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: GET_DETAIL_TEACHER,
@@ -42,7 +42,7 @@ export const getTeacherDetail = (id) => (dispatch,getState) => {
 
 export const addTeacher = (teacher) => (dispatch,getState) => {
     axios
-        .post('/api/guru', teacher,tokenConfig(getState))
+        .post('/api/teachers', teacher,tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: ADD_TEACHER,
@@ -52,7 +52,7 @@ export const addTeacher = (teacher) => (dispatch,getState) => {
         .catch(err => returnErrors(err.response.data, err.response.status));
 };
 export const deleteTeacher = (id) => (dispatch,getState) => {
-    axios.delete(`/api/guru/${id}`,tokenConfig(getState))
+    axios.delete(`/api/teacher/${id}`,tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: DELETE_TEACHER,

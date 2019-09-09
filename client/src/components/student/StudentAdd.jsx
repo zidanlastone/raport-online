@@ -8,12 +8,11 @@ import {
     Button
 } from 'react-bootstrap';
 
-import { 
-    connect 
-} from 'react-redux';
+import { connect } from 'react-redux';
+
 import {
     addStudents
-} from '../../redux/actions/studentsActions' 
+} from '../../redux/actions/studentsActions';
 
 function StudentAdd(props) {
 
@@ -130,4 +129,5 @@ function StudentAdd(props) {
     )
 }
 
-export default connect(null, {addStudents})(StudentAdd)
+
+export default connect(null, {StudentAdd})(StudentAdd)

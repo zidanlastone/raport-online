@@ -8,7 +8,11 @@ const db = require('../models');
 // get subject by kelas
 // access public
 router.get('/', auth, (req, res) => {
-    db.subjects.findAll()
+    db.subjects.findAll({
+        include:[{
+            model:db.teachers
+        }]
+    })
         .then(subject => {
             res.json(subject);
         })

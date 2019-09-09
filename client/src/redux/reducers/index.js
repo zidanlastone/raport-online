@@ -13,7 +13,7 @@ import errorReducers from './errorReducers';
 
 export default combineReducers({
     students: studentsReducers,
-    teacher: teachersReducers,
+    teachers: teachersReducers,
     grade: gradeReducers,
     subject: subjectReducers,
     competency: competencyReducers,

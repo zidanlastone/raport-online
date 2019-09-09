@@ -8,19 +8,15 @@ import {
     Switch
 } from 'react-router-dom';
 
-import {
-    Provider
-} from 'react-redux';
-
-import store from './redux/store';
-
+import store from './redux/store'
+import {Provider} from 'react-redux'
 ReactDOM.render(
 <BrowserRouter>
-    <Provider store={store}>
-        <Switch>
-            <App />
-        </Switch>
-    </Provider>
+<Provider store={store}>
+    <Switch>
+        <App />
+    </Switch>
+</Provider>
 </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

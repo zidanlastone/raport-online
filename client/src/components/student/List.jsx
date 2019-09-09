@@ -1,33 +1,39 @@
-import React, {lazy, Suspense, useEffect} from 'react'
-import Loading from '../loader/Loading'
-import {connect, useDispatch} from 'react-redux';
-import {
-    getStudents
-} from '../../redux/actions/studentsActions';
-const ListItem = lazy(()=> import('./ListItem'));
-
+import React, {lazy, Suspense} from 'react'
+import Loading from '../loader/Loading';
+import {connect} from 'react-redux';
+import {getStudents} from '../../redux/actions/studentsActions';
+import MaterialTable from 'material-table';
 const loading = () => <Loading/>
 
-function List(props) {
-
-    const useFetching = (actionCreator, dispatch) => {
-        useEffect(() => {
-            dispatch(actionCreator());
-        });
+class List extends React.Component{
+    componentDidMount = ()=>{
+        this.props.getStudents();
     }
-    useFetching(getStudents, useDispatch());
-    const [students] = props.students;
-    return (
-        <Suspense fallback={loading()}>
-            {students.map((student) => (
-                <ListItem name={student.name}/>
-            ))}
-        </Suspense>
-    )
-}
+    render(){
+        const {students} = this.props.students  
+        return (
+            <Suspense fallback={loading()}>
+                <MaterialTable
+                    title = "Student List"
+                    columns = {[
+                        {title:'Photo', field:'image', render: rowData =><img src={'/assets/image/'+rowData.image} style={{width:80,height:80}} /> },
+                        {title:'Name', field:'name'},
+                        {title:'NIS', field:'nis'},
+                        { title: 'NISN', field: 'nisn' },
+                        { title: 'Gender', field: 'gender' },
+                        { title: 'Birth place', field: 'birthLocation' },
+                        { title: 'Birth date', field: 'birthDate' }
+                    ]}
 
+                    data = {students}
+                />
+                    
+            </Suspense>
+        )
+    }
+}
 const mapStateToProps = (state) => ({
     students: state.students
 });
 
-export default connect(mapStateToProps, {getStudents})(List);
+export default connect(mapStateToProps, { getStudents } )(List);

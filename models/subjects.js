@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     teacherId: DataTypes.INTEGER
   }, {});
   subjects.associate = function(models) {
-    // associations can be defined here
+    subjects.belongsTo(models.teachers)
   };
   return subjects;
 };
