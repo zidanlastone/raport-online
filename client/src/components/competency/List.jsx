@@ -1,34 +1,37 @@
 import React, { Suspense } from "react";
 import Loading from "../loader/Loading";
+
 import MaterialTable from "material-table";
 
 const loading = () => <Loading />;
 
 const List = props => {
-  const { teachers } = props;
+  const { competency } = props;
   return (
     <Suspense fallback={loading()}>
       <MaterialTable
-        title="Teacher List"
+        title="Competency List"
         columns={[
-          { title: "NIP", field: "nip" },
-          { title: "Teacher Name", field: "teacherName" }
+          { title: "Competency Name", field: "competencyName" },
+          { title: "Semester", field: "semester" },
+          { title: "KKM", field: "kkm" }
         ]}
-        data={teachers}
+        data={competency}
         actions={[
           rowData => ({
             icon: "edit",
-            tooltip: "Edit Teacher",
-            onClick: (e, rowData) => console.log("edit student" + rowData.name)
+            tooltip: "Edit Subject",
+            onClick: (e, rowData) =>
+              console.log("edit student" + rowData.subjectName)
           }),
           rowData => ({
             icon: "delete",
-            tooltip: "Delete Teacher",
+            tooltip: "Delete Competency",
             onClick: (e, rowData) => {
               props.wantToDelete({
                 id: rowData.id,
-                body: "Delete taecher with name ",
-                target: rowData.teacherName
+                body: "Delete competency with name ",
+                target: rowData.competencyName
               });
             }
           })

@@ -1,50 +1,67 @@
-import React,{lazy, Suspense} from 'react'
+import React, { lazy, Suspense } from "react";
 
-import Loading from '../loader/Loading';
-import PrivateRoute from '../PrivateRoute';
-const TopNavbar = lazy(() => import('../TopNavbar/TopNavbar'));
-const Dashboard = lazy(() => import('../dashboard/Dashboard'));
-const Student = lazy(() => import('../student/Student'));
-const Teacher = lazy(() => import('../teacher/Teacher'));
-const Subject = lazy(() => import('../subject/Subject'));
-const Competency = lazy(() => import('../competency/Competency'));
-
+import Loading from "../loader/Loading";
+import PrivateRoute from "../PrivateRoute";
+const TopNavbar = lazy(() => import("../TopNavbar/TopNavbar"));
+const Dashboard = lazy(() => import("../dashboard/Dashboard"));
+const Student = lazy(() => import("../student/Student"));
+const Teacher = lazy(() => import("../teacher/Teacher"));
+const Subject = lazy(() => import("../subject/Subject"));
+const Competency = lazy(() => import("../competency/Competency"));
+const Grades = lazy(() => import("../grades/Grades"));
 const adminRoutes = [
-    {
-        path: '/admin/dashboard',
-        name: 'Dashboard',
-        component: Dashboard
-    }, {
-        path: '/admin/student',
-        name: 'Students',
-        component: Student
-    }, {
-        path: '/admin/teachers',
-        name: 'Teachers',
-        component: Teacher
-    }, {
-        path: '/admin/subjects',
-        name: 'Subjects',
-        component: Subject
-    }, {
-        path: '/admin/competency',
-        name: 'Competency',
-        component: Competency
-    }
+  {
+    path: "/admin/dashboard",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "/admin/student",
+    name: "Students",
+    component: Student
+  },
+  {
+    path: "/admin/teachers",
+    name: "Teachers",
+    component: Teacher
+  },
+  {
+    path: "/admin/subjects",
+    name: "Subjects",
+    component: Subject
+  },
+  {
+    path: "/admin/competency",
+    name: "Competency",
+    component: Competency
+  },
+  {
+    path: "/admin/grades",
+    name: "Grades",
+    component: Grades
+  },
+  {
+    path: "/admin/grades/:id",
+    component: Grades
+  }
 ];
 
-const loading = () => <Loading /> ;
+const loading = () => <Loading />;
 function Admin() {
-    return (
-        <div>
-            <Suspense fallback={ loading() }>
-            <TopNavbar routes={adminRoutes} />
-                {adminRoutes.map((route, index) => (
-                    <PrivateRoute key={index} path={route.path} component={route.component}/>
-                ))}
-            </Suspense>
-        </div>
-    )
+  return (
+    <div>
+      <Suspense fallback={loading()}>
+        <TopNavbar routes={adminRoutes} />
+        {adminRoutes.map((route, index) => (
+          <PrivateRoute
+            key={index}
+            path={route.path}
+            component={route.component}
+          />
+        ))}
+      </Suspense>
+    </div>
+  );
 }
 
-export default Admin
+export default Admin;

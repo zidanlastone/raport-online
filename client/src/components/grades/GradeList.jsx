@@ -1,34 +1,37 @@
 import React, { Suspense } from "react";
 import Loading from "../loader/Loading";
+
 import MaterialTable from "material-table";
 
 const loading = () => <Loading />;
 
-const List = props => {
-  const { teachers } = props;
+const GradeList = props => {
+  const { grades } = props;
   return (
     <Suspense fallback={loading()}>
       <MaterialTable
-        title="Teacher List"
+        title="Grade List"
         columns={[
-          { title: "NIP", field: "nip" },
-          { title: "Teacher Name", field: "teacherName" }
+          { title: "Grade Name", field: "gradeName" },
+          { title: "Departement Name", field: "departement.departementName" },
+          { title: "Homeroom Teacher Name", field: "teacher.teacherName" }
         ]}
-        data={teachers}
+        data={grades}
         actions={[
           rowData => ({
             icon: "edit",
-            tooltip: "Edit Teacher",
-            onClick: (e, rowData) => console.log("edit student" + rowData.name)
+            tooltip: "Edit Grade",
+            onClick: (e, rowData) =>
+              console.log("edit student" + rowData.subjectName)
           }),
           rowData => ({
             icon: "delete",
-            tooltip: "Delete Teacher",
+            tooltip: "Delete Grade",
             onClick: (e, rowData) => {
               props.wantToDelete({
                 id: rowData.id,
-                body: "Delete taecher with name ",
-                target: rowData.teacherName
+                body: "Delete Grade with name ",
+                target: rowData.gradeName
               });
             }
           })
@@ -41,4 +44,4 @@ const List = props => {
   );
 };
 
-export default List;
+export default GradeList;

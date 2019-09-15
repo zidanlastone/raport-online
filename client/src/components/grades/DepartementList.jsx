@@ -1,34 +1,33 @@
 import React, { Suspense } from "react";
 import Loading from "../loader/Loading";
+
 import MaterialTable from "material-table";
 
 const loading = () => <Loading />;
 
-const List = props => {
-  const { teachers } = props;
+const DepartementList = props => {
+  const { departement } = props;
   return (
     <Suspense fallback={loading()}>
       <MaterialTable
-        title="Teacher List"
-        columns={[
-          { title: "NIP", field: "nip" },
-          { title: "Teacher Name", field: "teacherName" }
-        ]}
-        data={teachers}
+        title="Departement List"
+        columns={[{ title: "Departement Name", field: "departementName" }]}
+        data={departement}
         actions={[
           rowData => ({
             icon: "edit",
-            tooltip: "Edit Teacher",
-            onClick: (e, rowData) => console.log("edit student" + rowData.name)
+            tooltip: "Edit Subject",
+            onClick: (e, rowData) =>
+              console.log("edit student" + rowData.subjectName)
           }),
           rowData => ({
             icon: "delete",
-            tooltip: "Delete Teacher",
+            tooltip: "Delete Departement",
             onClick: (e, rowData) => {
               props.wantToDelete({
                 id: rowData.id,
-                body: "Delete taecher with name ",
-                target: rowData.teacherName
+                body: "Delete Departement with name ",
+                target: rowData.departementName
               });
             }
           })
@@ -41,4 +40,4 @@ const List = props => {
   );
 };
 
-export default List;
+export default DepartementList;
