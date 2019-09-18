@@ -63,7 +63,7 @@ class Register extends React.Component {
                                     <Form.Control className="border-top-0 border-right-0 border-left-0 rounded-0" type="text" name="name" onChange={this.onChange} value={this.state.name} placeholder="Masukan nama ..." />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Control className="border-top-0 border-right-0 border-left-0 rounded-0" type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Masukan username ..." />
+                                    <Form.Control className="border-top-0 border-right-0 border-left-0 rounded-0" type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Masukan email ..." />
                                 </Form.Group>
                             <Form.Group>
                                 <Form.Control className="border-top-0 border-right-0 border-left-0 rounded-0" type="text" name="username" onChange={this.onChange} value={this.state.username} placeholder="Masukan username ..." />

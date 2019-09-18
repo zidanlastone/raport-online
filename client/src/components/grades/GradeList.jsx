@@ -1,5 +1,8 @@
 import React, { Suspense } from "react";
 import Loading from "../loader/Loading";
+import {
+  Link
+} from 'react-router-dom';
 
 import MaterialTable from "material-table";
 
@@ -12,7 +15,7 @@ const GradeList = props => {
       <MaterialTable
         title="Grade List"
         columns={[
-          { title: "Grade Name", field: "gradeName" },
+          { title: "Grade Name", field: "gradeName", render: rowData => <Link to={"/admin/grades/"+ rowData.id}> {rowData.gradeName} </Link> },
           { title: "Departement Name", field: "departement.departementName" },
           { title: "Homeroom Teacher Name", field: "teacher.teacherName" }
         ]}

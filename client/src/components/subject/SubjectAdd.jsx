@@ -18,11 +18,12 @@ function SubjectsAdd(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    
     const newSubject = {
       subjectName: subjects.subjectName,
       teacherId: subjects.teacherId
     };
-    console.log(newSubject);
+
     props.onAddSubject(newSubject);
     setSubjects({
       subjectName: "",
@@ -49,12 +50,14 @@ function SubjectsAdd(props) {
             <Col md={6}>
               <Form.Group>
                 <Form.Label>Subject Teacher</Form.Label>
+
                 <select
                   name="teacherId"
                   onChange={handleChange}
                   value={subjects.teacherId}
                   className="form-control"
                 >
+                  <option>Select Teacher</option>
                   {props.teachers.map(teacher => (
                     <option key={teacher.id} value={teacher.id}>
                       {teacher.teacherName}
