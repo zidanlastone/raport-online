@@ -4,11 +4,13 @@ import {
   DELETE_STUDENT,
   LOADING_STUDENT,
   GET_DETAIL_STUDENT,
-  GET_STUDENTS_BY_GRADE
+  GET_STUDENTS_BY_GRADE,
+  CLEAR_STUDENT
 } from "../actions/types";
 
 const initialState = {
   students: [],
+  students_by_grade: [],
   detail: [],
   loading: false
 };
@@ -23,8 +25,7 @@ export default function(state = initialState, action) {
       };
     case GET_STUDENTS_BY_GRADE:
       return {
-        ...state,
-        students: action.payload,
+        students_by_grade: action.payload,
         loading: false
       };
     case GET_DETAIL_STUDENT:
@@ -49,6 +50,10 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case CLEAR_STUDENT:
+      return {
+        students: []
       };
     default:
       return state;

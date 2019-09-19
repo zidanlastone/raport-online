@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import Loading from "../loader/Loading";
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import MaterialTable from "material-table";
 
@@ -15,18 +13,21 @@ const GradeList = props => {
       <MaterialTable
         title="Grade List"
         columns={[
-          { title: "Grade Name", field: "gradeName", render: rowData => <Link to={"/admin/grades/"+ rowData.id}> {rowData.gradeName} </Link> },
+          {
+            title: "Grade Name",
+            field: "gradeName",
+            render: rowData => (
+              <Link to={"/admin/grades/" + rowData.id}>
+                {" "}
+                {rowData.gradeName}{" "}
+              </Link>
+            )
+          },
           { title: "Departement Name", field: "departement.departementName" },
           { title: "Homeroom Teacher Name", field: "teacher.teacherName" }
         ]}
         data={grades}
         actions={[
-          rowData => ({
-            icon: "edit",
-            tooltip: "Edit Grade",
-            onClick: (e, rowData) =>
-              console.log("edit student" + rowData.subjectName)
-          }),
           rowData => ({
             icon: "delete",
             tooltip: "Delete Grade",

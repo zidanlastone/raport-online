@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 import {
   addStudents,
   getStudents,
-  deleteStudent
+  deleteStudent,
+  clearStudent
 } from "../../redux/actions/studentsActions";
 
 import Loading from "../loader/Loading";
@@ -29,6 +30,10 @@ class Student extends React.Component {
 
   componentDidMount() {
     this.props.getStudents();
+  }
+
+  componentWillUnmount() {
+    this.props.clearStudent();
   }
 
   wantToDeleteStudent = value => {
@@ -88,5 +93,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { addStudents, getStudents, deleteStudent }
+  { addStudents, getStudents, deleteStudent, clearStudent }
 )(Student);

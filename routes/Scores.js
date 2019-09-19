@@ -15,14 +15,37 @@ router.get("/", auth, (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/:student/:competency", auth, (req, res) => {
+  db.scores
+    .findOne({
+      where: {
+        studentId: req.params.student,
+        competencyId: req.params.competency
+      }
+    })
+    .then(score => {
+      res.json(score);
+    })
+    .catch(err => console.log(err));
+});
+
 // insert score to database
 router.post("/", auth, (req, res) => {
-  let jsondata = req.body;
-
   db.scores
-    .bulkCreate(jsondata)
+    .findOne({
+      where: {
+        studentId: req.body.studentId,
+        competencyId: req.body.competencyId
+      }
+    })
     .then(scores => {
-      res.json(scores);
+      if (scores) {
+        scores.update(req.body);
+        res.json(scores);
+      } else {
+        db.scores.create(req.body);
+        res.json(scores);
+      }
     })
     .catch(err => console.log(err));
 });

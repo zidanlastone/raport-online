@@ -18,12 +18,6 @@ const List = props => {
         data={subject}
         actions={[
           rowData => ({
-            icon: "edit",
-            tooltip: "Edit Subject",
-            onClick: (e, rowData) =>
-              console.log("edit student" + rowData.subjectName)
-          }),
-          rowData => ({
             icon: "delete",
             tooltip: "Delete Subject",
             onClick: (e, rowData) => {

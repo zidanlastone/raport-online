@@ -1,12 +1,13 @@
 import React, { lazy, Suspense } from "react";
 
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route } from "react-router-dom";
 
 import Loading from "../loader/Loading";
 import PrivateRoute from "../PrivateRoute";
+import StudentDetail from "../student/StudentDetail";
 
 const TopNavbar = lazy(() => import("../TopNavbar/TopNavbar"));
 const Dashboard = lazy(() => import("../dashboard/Dashboard"));
@@ -28,6 +29,10 @@ const adminRoutes = [
     path: "/admin/student",
     name: "Students",
     component: Student
+  },
+  {
+    path: "/admin/student/detail/:id",
+    component: StudentDetail
   },
   {
     path: "/admin/teachers",
@@ -61,18 +66,17 @@ const adminRoutes = [
 ];
 
 const loading = () => <Loading />;
-function Admin({ auth }) {
-  
-  if (!auth.isAuthenticated) {
-    return <Redirect  to="/login" />
+function Admin({ auth: { isAuthenticated } }) {
+  if (!isAuthenticated) {
+    return <Redirect to="/login" />;
   }
 
   return (
     <div>
       <Suspense fallback={loading()}>
-        <TopNavbar routes={adminRoutes} />
+        <TopNavbar routes={adminRoutes} isAuthenticated={isAuthenticated} />
         {adminRoutes.map((route, index) => (
-          <PrivateRoute
+          <Route
             exact
             key={index}
             path={route.path}
@@ -86,11 +90,10 @@ function Admin({ auth }) {
 
 PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired
-}
+};
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth
 });
-
 
 export default connect(mapStateToProps)(Admin);

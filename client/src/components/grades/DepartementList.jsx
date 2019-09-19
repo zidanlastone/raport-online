@@ -15,12 +15,6 @@ const DepartementList = props => {
         data={departement}
         actions={[
           rowData => ({
-            icon: "edit",
-            tooltip: "Edit Subject",
-            onClick: (e, rowData) =>
-              console.log("edit student" + rowData.subjectName)
-          }),
-          rowData => ({
             icon: "delete",
             tooltip: "Delete Departement",
             onClick: (e, rowData) => {
